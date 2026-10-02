@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>出産準備ガイド</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#ffe3e8">
+<meta name="apple-mobile-web-app-title" content="出産準備">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fff5f3;          /* ほんのりピーチ */
+  --dot:#ffe3dd;
+  --card:#ffffff;
+  --ink:#4a3a52;         /* やさしいプラム */
+  --sub:#7f7088;
+  --line:#f1dfe0;
+  --peach:#ff9e8f;
+  --peach-ink:#c4564a;
+  --peach-bg:#ffe6e1;
+  --mint:#6cc3a6;
+  --mint-ink:#2f7d64;
+  --mint-bg:#dff4ec;
+  --butter:#ffd36e;
+  --butter-ink:#9a6a00;
+  --butter-bg:#fff2cf;
+  --lav:#a993e6;
+  --lav-ink:#6a52b8;
+  --lav-bg:#eee8ff;
+  --sky:#8ec5f0;
+  --sky-ink:#2f6f9f;
+  --sky-bg:#e3f1fc;
+  --focus:#6a52b8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#251f2c;--dot:#2e2737;--card:#2f2838;--ink:#f3eaf5;--sub:#bcaec6;--line:#463c52;
+    --peach:#ff9e8f;--peach-ink:#ffb3a7;--peach-bg:#4a2e33;
+    --mint:#6cc3a6;--mint-ink:#93dcc2;--mint-bg:#1f3a33;
+    --butter:#ffd36e;--butter-ink:#ffd98a;--butter-bg:#403520;
+    --lav:#a993e6;--lav-ink:#c9b9ff;--lav-bg:#352d4f;
+    --sky:#8ec5f0;--sky-ink:#a9d4f7;--sky-bg:#203447;--focus:#c9b9ff;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#251f2c;--dot:#2e2737;--card:#2f2838;--ink:#f3eaf5;--sub:#bcaec6;--line:#463c52;
+  --peach:#ff9e8f;--peach-ink:#ffb3a7;--peach-bg:#4a2e33;
+  --mint:#6cc3a6;--mint-ink:#93dcc2;--mint-bg:#1f3a33;
+  --butter:#ffd36e;--butter-ink:#ffd98a;--butter-bg:#403520;
+  --lav:#a993e6;--lav-ink:#c9b9ff;--lav-bg:#352d4f;
+  --sky:#8ec5f0;--sky-ink:#a9d4f7;--sky-bg:#203447;--focus:#c9b9ff;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);
+  background-color:var(--bg);
+  background-image:radial-gradient(var(--dot) 2.2px, transparent 2.6px);
+  background-size:22px 22px;
+  font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+  font-size:16px;line-height:1.8}
+a{color:var(--lav-ink);font-weight:700}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:10px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+
+/* ガーランド */
+.garland{display:block;width:100%;height:46px}
+
+/* ヒーロー */
+header.hero{padding:6px 0 4px}
+.hero-top{display:flex;align-items:flex-end;gap:10px}
+.hero-text{flex:1;min-width:0}
+.place{display:inline-block;font-size:.85rem;font-weight:700;color:var(--mint-ink);background:var(--mint-bg);
+  padding:3px 12px;border-radius:99px;margin:8px 0 10px}
+h1{font-size:clamp(2rem,8.5vw,2.8rem);line-height:1.2;margin:0 0 10px;font-weight:900;color:var(--ink);letter-spacing:.04em}
+h1 .sp{display:inline-block}
+.mobile{flex:none;width:118px;height:132px;margin-right:-6px}
+.mobile .swing{transform-origin:60px 6px;animation:swing 4.5s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.lead{margin:0 0 18px;color:var(--sub);font-size:.95rem}
+
+/* 入力カード */
+.due{background:var(--card);border:2.5px solid var(--peach);border-radius:28px;padding:20px 18px 18px;position:relative}
+.due::before{content:"あなたの状況";position:absolute;top:-15px;left:20px;background:var(--peach);color:#fff;
+  font-weight:900;font-size:.85rem;padding:3px 14px;border-radius:99px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-grid .f.wide{grid-column:1/-1}
+@media (max-width:420px){.form-grid{grid-template-columns:1fr}}
+.due label{display:block;font-weight:700;margin:0 0 4px 4px;font-size:.9rem;color:var(--sub)}
+.due input,.due select{font:inherit;font-size:1rem;width:100%;padding:10px 14px;border:2px solid var(--line);border-radius:16px;
+  background:var(--bg);color:var(--ink);min-height:48px;appearance:none;-webkit-appearance:none}
+.due select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23c4564a' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.due input:focus,.due select:focus{border-color:var(--peach)}
+.due input:disabled{opacity:.5}
+#dueDate{font-weight:700;font-size:1.1rem;color:var(--peach-ink)}
+.local-status{margin:14px 0 0;font-size:.9rem;border-radius:16px}
+.local-status:empty{display:none}
+.local-status.ok,.local-status.ai,.local-status.warn,.local-status.busy{padding:10px 14px}
+.local-status.ok{background:var(--mint-bg);color:var(--mint-ink)}
+.local-status.ok::before{content:"✓ "}
+.local-status.ai{background:var(--butter-bg);color:var(--ink)}
+.local-status.warn{background:var(--peach-bg);color:var(--peach-ink)}
+.local-status.busy{background:var(--lav-bg);color:var(--lav-ink)}
+.mini{font:inherit;font-size:.8rem;font-weight:700;margin-left:4px;padding:3px 12px;border-radius:99px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer}
+.hint{font-size:.8rem;color:var(--sub);margin:10px 0 0 4px}
+
+.now{margin-top:16px;display:none;background:var(--lav-bg);border-radius:22px;padding:16px}
+.now.show{display:block}
+.week{font-size:1rem;font-weight:700;color:var(--lav-ink);margin:0 0 4px;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.week b{font-size:2.6rem;font-weight:900;line-height:1;color:var(--lav-ink)}
+.next h3{font-size:.85rem;margin:8px 0 4px;color:var(--lav-ink);font-weight:900}
+.next ul{margin:0;padding:0;list-style:none}
+.next li{padding:9px 12px;margin-top:6px;background:var(--card);border-radius:14px;display:flex;gap:10px;justify-content:space-between;font-size:.93rem}
+.next li span:last-child{white-space:nowrap;color:var(--lav-ink);font-size:.82rem;font-weight:700}
+
+/* タブ */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;padding:10px 0;margin-top:18px;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs button{font:inherit;font-weight:700;font-size:.9rem;background:var(--card);border:2px solid var(--line);color:var(--sub);
+  padding:7px 14px;border-radius:99px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:5px}
+nav.tabs button .e{font-size:1.05rem}
+nav.tabs button[aria-selected="true"]{background:var(--peach);border-color:var(--peach);color:#fff}
+
+section.panel{display:none;padding:14px 0 40px}
+section.panel.active{display:block}
+h2{font-size:1.4rem;margin:0 0 4px;font-weight:900}
+.desc{margin:0 0 16px;color:var(--sub);font-size:.92rem}
+
+.progress{display:flex;align-items:center;gap:12px;margin:0 0 20px;background:var(--card);border-radius:99px;padding:8px 14px 8px 8px;border:2px solid var(--line)}
+.bar{flex:1;height:14px;background:var(--mint-bg);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--mint);width:0;border-radius:99px;transition:width .4s}
+.progress span{font-weight:900;font-size:.88rem;white-space:nowrap;color:var(--mint-ink)}
+
+/* 時期別 */
+.stage{position:relative;margin-bottom:30px}
+.stage h3,.stage .range{padding-left:56px}
+.stage .range{margin-bottom:12px!important}
+.stage .dot{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:1.35rem;
+  background:var(--card);border:2.5px solid var(--line)}
+.stage.current .dot{border-color:var(--peach);background:var(--peach-bg)}
+.stage h3{margin:0;font-size:1.2rem;font-weight:900;padding-top:2px}
+.stage .range{margin:0 0 10px;color:var(--sub);font-size:.85rem}
+.stage.current h3::after{content:"いまここ";margin-left:8px;font-size:.72rem;background:var(--peach);color:#fff;padding:2px 10px;border-radius:99px;vertical-align:middle}
+
+.task{background:var(--card);border:2px solid var(--line);border-radius:20px;margin-bottom:10px}
+.task[open]{border-color:var(--lav)}
+.task summary{list-style:none;display:flex;gap:12px;align-items:flex-start;padding:13px 14px;cursor:pointer}
+.task summary::-webkit-details-marker{display:none}
+.task input[type=checkbox]{appearance:none;-webkit-appearance:none;width:26px;height:26px;margin:0;flex:none;cursor:pointer;
+  border:2.5px solid var(--mint);border-radius:50%;background:var(--card);display:grid;place-items:center;transition:background .15s}
+.task input[type=checkbox]:checked{background:var(--mint)}
+.task input[type=checkbox]:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 3px 3px 0;transform:translateY(-1px) rotate(45deg)}
+.task .t{flex:1;min-width:0}
+.task .title{font-weight:700;display:block;line-height:1.55}
+.task.done{background:var(--mint-bg);border-color:transparent}
+.task.done .title{text-decoration:line-through;text-decoration-color:var(--mint);color:var(--sub)}
+.meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;font-size:.74rem}
+.tag{padding:1px 9px;border-radius:99px;background:var(--bg);color:var(--sub);font-weight:700}
+.tag.apply{background:var(--peach-bg);color:var(--peach-ink)}
+.tag.money{background:var(--butter-bg);color:var(--butter-ink)}
+.tag.papa{background:var(--sky-bg);color:var(--sky-ink)}
+.tag.mama{background:var(--lav-bg);color:var(--lav-ink)}
+.tag.date{background:transparent;color:var(--sub);font-weight:500;padding-left:2px}
+.chev{flex:none;color:var(--lav);transition:transform .2s;margin-top:3px}
+.task[open] .chev{transform:rotate(180deg)}
+.body{padding:0 16px 16px 52px;font-size:.92rem}
+.body p{margin:0 0 6px}
+.body dl{margin:8px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;background:var(--bg);border-radius:14px;padding:10px 12px}
+.body dt{color:var(--peach-ink);font-weight:900;font-size:.82rem;padding-top:2px}
+.body dd{margin:0}
+
+/* 申請リスト */
+.deadline-list{list-style:none;margin:0;padding:0}
+.deadline-list .group{font-weight:900;margin:26px 0 10px;font-size:1.05rem;display:flex;align-items:center;gap:8px}
+.deadline-list .group::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--peach)}
+.deadline-list .group:first-child{margin-top:0}
+
+/* 給付金 */
+.total{background:var(--butter);color:#4a3a52;border-radius:28px;padding:20px 22px;margin-bottom:22px;position:relative;overflow:hidden}
+.total::after{content:"💰";position:absolute;right:14px;top:10px;font-size:2.4rem;opacity:.9}
+.total p{margin:0}
+.total .big{font-size:1.7rem;font-weight:900;line-height:1.35;padding-right:48px}
+.total small{font-size:.85rem;font-weight:700}
+h3.sec{margin:30px 0 10px;font-size:1.05rem;font-weight:900}
+.money-card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:16px 18px;margin-bottom:12px;position:relative}
+.money-card::before{content:"";position:absolute;left:18px;top:-2px;width:44px;height:6px;border-radius:0 0 6px 6px;background:var(--butter)}
+.money-card.papa::before{background:var(--sky)}
+.money-card.mama::before{background:var(--lav)}
+.money-card.local::before{background:var(--mint)}
+.money-card.gray::before{background:var(--line)}
+.money-card h3{margin:4px 0 0;font-size:1rem;font-weight:900}
+.amount{display:inline-block;font-size:1.25rem;font-weight:900;color:var(--butter-ink);background:var(--butter-bg);padding:2px 12px;border-radius:12px;margin:8px 0 6px}
+.money-card.papa .amount{color:var(--sky-ink);background:var(--sky-bg)}
+.money-card.mama .amount{color:var(--lav-ink);background:var(--lav-bg)}
+.money-card.local .amount{color:var(--mint-ink);background:var(--mint-bg)}
+.money-card.gray .amount{color:var(--sub);background:var(--bg);font-size:1rem}
+.money-card p{margin:0 0 4px;font-size:.92rem}
+.money-card .how{color:var(--sub);font-size:.85rem;margin-top:6px}
+.how-note{font-size:.86rem;color:var(--sub);margin:4px 0 14px}
+.note{background:var(--peach-bg);border-radius:20px;padding:14px 16px;font-size:.9rem;margin:0 0 18px}
+.note b{color:var(--peach-ink)}
+.src{display:inline-block;font-size:.7rem;font-weight:900;padding:2px 10px;border-radius:99px;vertical-align:middle;margin-left:4px}
+.src.ok{background:var(--mint-bg);color:var(--mint-ink)}
+.src.ai{background:var(--butter-bg);color:var(--butter-ink)}
+
+/* 窓口 */
+.contact{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:14px 18px;margin-bottom:10px}
+.contact h3{margin:0 0 4px;font-size:1rem;font-weight:900}
+.contact p{margin:0;font-size:.9rem}
+.tel a{display:inline-block;font-size:1.15rem;background:var(--mint-bg);color:var(--mint-ink);padding:2px 14px;border-radius:99px;margin:2px 0 6px;text-decoration:none}
+.tel a::before{content:"📞 "}
+
+/* カレンダー */
+.cal-wrap{background:var(--card);border:2px solid var(--line);border-radius:26px;padding:14px 12px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal-title{margin:0;font-size:1.25rem;font-weight:900}
+.cal-nav{font:inherit;font-size:1.5rem;line-height:1;width:44px;height:44px;border-radius:50%;border:none;background:var(--peach-bg);color:var(--peach-ink);cursor:pointer}
+.cal-legend{display:flex;gap:14px;font-size:.78rem;color:var(--sub);margin:0 4px 8px;font-weight:700}
+.lg{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.lg.start{background:var(--lav)}.lg.dl{background:var(--peach-ink)}.lg.duedot{background:var(--butter)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-dow{text-align:center;font-size:.78rem;color:var(--sub);padding:2px 0;font-weight:700}
+.cal-dow.sun{color:var(--peach-ink)}.cal-dow.sat{color:var(--sky-ink)}
+.cal-day{font:inherit;aspect-ratio:1/1.08;min-height:44px;border:none;border-radius:14px;background:transparent;color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:6px 0 0;cursor:pointer}
+.cal-day.blank{visibility:hidden}
+.cal-day .n{font-size:.92rem;font-weight:500;width:28px;height:28px;display:grid;place-items:center;border-radius:50%}
+.cal-day.active{background:var(--lav-bg)}
+.cal-day.today .n{background:var(--peach);color:#fff;font-weight:900}
+.cal-day.dueday{background:var(--butter-bg)}
+.cal-day{position:relative}
+.cal-day.dueday::after{content:"👶";position:absolute;top:0;right:1px;font-size:.72rem}
+.cal-day[aria-pressed="true"]{box-shadow:inset 0 0 0 2.5px var(--lav-ink)}
+.dots{display:flex;gap:3px;margin-top:2px;flex-wrap:wrap;justify-content:center;max-width:90%}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--lav)}
+.dots i.dl{background:var(--peach-ink)}
+.dots i.duedot{background:var(--butter)}
+.cal-item{display:flex;gap:10px;align-items:baseline;padding:11px 14px;margin-bottom:6px;background:var(--card);border-radius:16px;border:2px solid var(--line)}
+.cal-item .when{flex:none;font-size:.82rem;color:var(--lav-ink);font-weight:900;min-width:6.5em}
+.cal-item.done{background:var(--mint-bg);border-color:transparent}
+.cal-item.done .what{text-decoration:line-through;color:var(--sub)}
+.cal-item .what b{display:inline-block;font-size:.72rem;padding:0 8px;border-radius:99px;margin-left:6px;background:var(--peach-bg);color:var(--peach-ink);font-weight:900}
+
+footer{padding:24px 0 36px;color:var(--sub);font-size:.8rem}
+footer .wrap{background:var(--card);border-radius:22px;padding:16px 18px}
+footer p{margin:0}
+.reset{font:inherit;font-size:.8rem;font-weight:700;background:none;border:2px solid var(--line);color:var(--sub);padding:6px 14px;border-radius:99px;cursor:pointer;margin-top:12px}
+
+
+/* カレンダーの週数 */
+.cal-tt{text-align:center}
+.cal-sub{margin:0;font-size:.8rem;font-weight:700;color:var(--lav-ink)}
+.cal-sub:empty{display:none}
+.lg.wk{background:var(--card);border:2px solid var(--lav)}
+.cal-day .wk{position:absolute;left:50%;bottom:3px;transform:translateX(-50%);font-size:.6rem;font-weight:900;line-height:1.2;
+  color:var(--lav-ink);background:var(--card);border:1.5px solid var(--lav);border-radius:99px;padding:0 4px;white-space:nowrap}
+.cal-day .wk.mo{color:#fff;background:var(--peach);border-color:var(--peach)}
+.cal-day{aspect-ratio:auto;min-height:62px}
+#calListTitle small{display:block;font-size:.8rem;color:var(--sub);font-weight:700}
+
+/* 成長 */
+.grow-card{background:var(--card);border:2.5px solid var(--peach);border-radius:30px;padding:18px 18px 20px;text-align:center}
+.grow-week{margin:0;display:flex;align-items:baseline;justify-content:center;gap:4px;flex-wrap:wrap;font-weight:700;color:var(--sub)}
+.grow-week b{font-size:3.2rem;line-height:1;color:var(--peach-ink);font-weight:900}
+.grow-week em{font-style:normal;margin-left:8px;background:var(--lav-bg);color:var(--lav-ink);padding:2px 12px;border-radius:99px;font-size:.9rem;align-self:center}
+.grow-art{width:min(260px,74vw);margin:8px auto 2px}
+.grow-art svg{display:block;width:100%;height:auto}
+.grow-art .float{animation:floaty 3.2s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.grow-art .zzz{animation:zz 2.4s ease-in-out infinite}
+@keyframes zz{0%,100%{opacity:.35}50%{opacity:1}}
+.grow-art .twinkle{animation:tw 2.8s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:1}50%{opacity:.4}}
+.grow-fruit{margin:0;font-size:1.25rem;font-weight:900}
+.grow-fruit .fe{font-size:1.7rem;margin-right:6px;vertical-align:-3px}
+.grow-chips{display:flex;justify-content:center;gap:8px;margin:10px 0 4px;flex-wrap:wrap}
+.grow-chips small{flex-basis:100%;font-size:.75rem;color:var(--sub);font-weight:700}
+.grow-chips span{background:var(--butter-bg);color:var(--butter-ink);font-weight:900;font-size:.9rem;padding:3px 14px;border-radius:99px}
+.grow-count{margin-top:14px}
+.grow-count p{margin:6px 0 0;font-size:.92rem;font-weight:700;color:var(--sub)}
+.grow-count b{font-size:1.4rem;color:var(--peach-ink)}
+.gbar{position:relative;height:14px;background:var(--mint-bg);border-radius:99px;margin:18px 6px 0}
+.gbar i{display:block;height:100%;background:var(--mint);border-radius:99px}
+.gbaby{position:absolute;top:50%;transform:translate(-50%,-55%);font-size:1.4rem}
+.grow-slider{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:14px 18px;margin:14px 0}
+.grow-slider label{font-weight:900;font-size:.9rem;display:block;margin-bottom:6px}
+.grow-slider input[type=range]{width:100%;accent-color:var(--peach);height:28px}
+.grow-scale{display:flex;justify-content:space-between;font-size:.75rem;color:var(--sub);font-weight:700}
+.grow-slider .back{margin:8px 0 0;color:var(--peach-ink)}
+.gnote{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:12px 16px;margin-bottom:10px}
+.gnote h3{margin:0 0 2px;font-size:.98rem;font-weight:900}
+.gnote p{margin:0;font-size:.92rem}
+.gnote.baby{border-color:var(--peach-bg)}.gnote.mama{border-color:var(--lav-bg)}.gnote.papa{border-color:var(--sky-bg)}
+
+/* 健診 */
+.cal-day.ksday::before{content:"🩺";position:absolute;top:1px;left:2px;font-size:.66rem}
+.cal-day.ksday.ksdone::before{content:"✅"}
+.ks-group{margin-bottom:12px}
+.cal-item.ks{border-color:var(--mint);background:color-mix(in srgb,var(--mint-bg) 55%,var(--card))}
+.cal-item.ks.done{opacity:.75}
+.cal-item.ks .what{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.ksname{font-weight:900}
+.ksmeta{font-size:.75rem}
+.ks-def{color:var(--sub);font-weight:700}
+.ks-res{display:inline-block;background:var(--mint);color:#fff;padding:0 8px;border-radius:99px;margin:0!important;font-size:.72rem}
+.cal-item.ks .what b.ks-res{background:var(--mint);color:#fff}
+.ksrow{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-top:4px;font-size:.8rem;font-weight:700;color:var(--sub)}
+.ksdate{display:flex;align-items:center;gap:4px}
+.ksdate input{font:inherit;font-size:.82rem;padding:3px 6px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);max-width:150px}
+.ksdone{display:flex;align-items:center;gap:4px;cursor:pointer}
+.ksdone input{accent-color:var(--mint);width:18px;height:18px}
+.next li.nk{background:var(--mint-bg)}
+.next li.nk span:last-child{color:var(--mint-ink)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<svg class="garland" viewBox="0 0 1200 46" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+<path d="M0 6 Q600 12 1200 6" stroke="var(--sub)" stroke-width="1.5" fill="none" opacity=".35"/><path d="M4 6 L34 6 L19 34 Z" fill="var(--peach)"/><path d="M44 6 L74 6 L59 34 Z" fill="var(--butter)"/><path d="M84 6 L114 6 L99 34 Z" fill="var(--mint)"/><path d="M124 6 L154 6 L139 34 Z" fill="var(--sky)"/><path d="M164 6 L194 6 L179 34 Z" fill="var(--lav)"/><path d="M204 6 L234 6 L219 34 Z" fill="var(--peach)"/><path d="M244 6 L274 6 L259 34 Z" fill="var(--butter)"/><path d="M284 6 L314 6 L299 34 Z" fill="var(--mint)"/><path d="M324 6 L354 6 L339 34 Z" fill="var(--sky)"/><path d="M364 6 L394 6 L379 34 Z" fill="var(--lav)"/><path d="M404 6 L434 6 L419 34 Z" fill="var(--peach)"/><path d="M444 6 L474 6 L459 34 Z" fill="var(--butter)"/><path d="M484 6 L514 6 L499 34 Z" fill="var(--mint)"/><path d="M524 6 L554 6 L539 34 Z" fill="var(--sky)"/><path d="M564 6 L594 6 L579 34 Z" fill="var(--lav)"/><path d="M604 6 L634 6 L619 34 Z" fill="var(--peach)"/><path d="M644 6 L674 6 L659 34 Z" fill="var(--butter)"/><path d="M684 6 L714 6 L699 34 Z" fill="var(--mint)"/><path d="M724 6 L754 6 L739 34 Z" fill="var(--sky)"/><path d="M764 6 L794 6 L779 34 Z" fill="var(--lav)"/><path d="M804 6 L834 6 L819 34 Z" fill="var(--peach)"/><path d="M844 6 L874 6 L859 34 Z" fill="var(--butter)"/><path d="M884 6 L914 6 L899 34 Z" fill="var(--mint)"/><path d="M924 6 L954 6 L939 34 Z" fill="var(--sky)"/><path d="M964 6 L994 6 L979 34 Z" fill="var(--lav)"/><path d="M1004 6 L1034 6 L1019 34 Z" fill="var(--peach)"/><path d="M1044 6 L1074 6 L1059 34 Z" fill="var(--butter)"/><path d="M1084 6 L1114 6 L1099 34 Z" fill="var(--mint)"/><path d="M1124 6 L1154 6 L1139 34 Z" fill="var(--sky)"/><path d="M1164 6 L1194 6 L1179 34 Z" fill="var(--lav)"/></svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="hero-text">
+        <p class="place" id="placeLine">全国の自治体に対応</p>
+        <h1><span class="sp">出産</span><span class="sp">準備ガイド</span></h1>
+      </div>
+      <svg class="mobile" viewBox="0 0 120 132" aria-hidden="true">
+  <line x1="60" y1="0" x2="60" y2="8" stroke="var(--sub)" stroke-width="2" opacity=".5"/>
+  <g class="swing">
+    <path d="M14 22 Q60 6 106 22" stroke="var(--sub)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".55"/>
+    <circle cx="60" cy="8" r="4" fill="var(--peach)"/>
+    <line x1="18" y1="21" x2="18" y2="58" stroke="var(--sub)" stroke-width="1.2" opacity=".45"/>
+    <line x1="60" y1="14" x2="60" y2="84" stroke="var(--sub)" stroke-width="1.2" opacity=".45"/>
+    <line x1="102" y1="21" x2="102" y2="52" stroke="var(--sub)" stroke-width="1.2" opacity=".45"/>
+    <!-- 雲 -->
+    <g transform="translate(18 66)"><ellipse cx="0" cy="0" rx="15" ry="9" fill="var(--sky)"/><circle cx="-6" cy="-6" r="7" fill="var(--sky)"/><circle cx="5" cy="-8" r="8" fill="var(--sky)"/></g>
+    <!-- 月 -->
+    <g transform="translate(60 100)"><circle r="16" fill="var(--butter)"/><circle cx="7" cy="-5" r="14" fill="var(--bg)"/>
+      <circle cx="-8" cy="2" r="1.6" fill="var(--ink)"/><path d="M-10 8 Q-7 10 -4 8" stroke="var(--ink)" stroke-width="1.4" fill="none" stroke-linecap="round"/></g>
+    <!-- 星 -->
+    <path transform="translate(102 62)" d="M0 -11 L3 -3.5 L11 -3.5 L4.5 1.5 L7 9.5 L0 4.5 L-7 9.5 L-4.5 1.5 L-11 -3.5 L-3 -3.5 Z" fill="var(--peach)" stroke="var(--peach)" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+</svg>
+    </div>
+    <p class="lead">妊娠がわかってから産後1か月すぎまでの手続き・準備・もらえるお金をまとめました。状況と予定日を入れると、あなた用の一覧と日付が出ます。</p>
+
+    <div class="due">
+      <div class="form-grid">
+        <div class="f">
+          <label for="pref">都道府県</label>
+          <select id="pref"><option value="">選んでください</option></select>
+        </div>
+        <div class="f">
+          <label for="muni">市区町村</label>
+          <input id="muni" list="muniList" placeholder="例：会津若松市" autocomplete="off" disabled>
+          <datalist id="muniList"></datalist>
+        </div>
+        <div class="f">
+          <label for="order">生まれる子は</label>
+          <select id="order">
+            <option value="1">1人目</option>
+            <option value="2" selected>2人目</option>
+            <option value="3">3人目以降</option>
+          </select>
+        </div>
+        <div class="f">
+          <label for="mama">ママの働き方</label>
+          <select id="mama">
+            <option value="home" selected>専業主婦・働いていない</option>
+            <option value="employee">会社員・公務員（雇用保険あり）</option>
+            <option value="self">自営業・フリーランス</option>
+          </select>
+        </div>
+        <div class="f wide">
+          <label for="dueDate">出産予定日</label>
+          <input type="date" id="dueDate">
+        </div>
+      </div>
+      <p class="local-status" id="localStatus" aria-live="polite"></p>
+      <p class="hint">入力内容とチェックはこの端末のブラウザにだけ保存されます。</p>
+      <div class="now" id="now">
+        <p class="week" id="weekText"></p>
+        <div class="next">
+          <h3>近いうちにやること</h3>
+          <ul id="nextList"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="表示切り替え">
+  <div class="wrap" role="tablist">
+    <button role="tab" aria-selected="true" aria-controls="p-stage" id="t-stage"><span class="e" aria-hidden="true">🌱</span>時期別</button>
+    <button role="tab" aria-selected="false" aria-controls="p-grow" id="t-grow"><span class="e" aria-hidden="true">👶</span>成長</button>
+    <button role="tab" aria-selected="false" aria-controls="p-cal" id="t-cal"><span class="e" aria-hidden="true">📅</span>カレンダー</button>
+    <button role="tab" aria-selected="false" aria-controls="p-apply" id="t-apply"><span class="e" aria-hidden="true">📝</span>申請リスト</button>
+    <button role="tab" aria-selected="false" aria-controls="p-money" id="t-money"><span class="e" aria-hidden="true">💰</span>給付金・助成</button>
+    <button role="tab" aria-selected="false" aria-controls="p-contact" id="t-contact"><span class="e" aria-hidden="true">☎️</span>窓口</button>
+  </div>
+</nav>
+
+<main>
+  <section class="panel active" id="p-stage" role="tabpanel" aria-labelledby="t-stage">
+    <div class="wrap">
+      <h2>妊娠の時期ごとにやること</h2>
+      <p class="desc">項目をタップすると詳しい内容が開きます。終わったらチェックを入れてください。</p>
+      <div class="progress"><div class="bar"><i id="barStage"></i></div><span id="countStage"></span></div>
+      <div id="stages"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-grow" role="tabpanel" aria-labelledby="t-grow">
+    <div class="wrap">
+      <h2>赤ちゃんの成長</h2>
+      <p class="desc" id="growDesc">いまの赤ちゃんの大きさと、ママの体の変化の目安です。</p>
+      <div class="grow-card">
+        <p class="grow-week" id="growWeek"></p>
+        <div class="grow-art" id="growArt"></div>
+        <p class="grow-fruit" id="growFruit"></p>
+        <div class="grow-chips" id="growChips"></div>
+        <div class="grow-count" id="growCount"></div>
+      </div>
+      <div class="grow-slider">
+        <label for="growRange">週を動かして見る</label>
+        <input type="range" id="growRange" min="4" max="40" step="1" value="20">
+        <div class="grow-scale" aria-hidden="true"><span>4週</span><span>20週</span><span>40週</span></div>
+        <button class="mini back" id="growNow" hidden>いまの週に戻す</button>
+      </div>
+      <div class="grow-notes" id="growNotes"></div>
+      <p class="how-note">大きさは一般的な目安です。赤ちゃんの成長には個人差があり、健診で伝えられる数字が一番正確です。</p>
+    </div>
+  </section>
+
+  <section class="panel" id="p-cal" role="tabpanel" aria-labelledby="t-cal">
+    <div class="wrap">
+      <h2>カレンダー</h2>
+      <p class="desc">印のある日にやることが始まります。日付をタップすると、その日に取りかかれる項目が出ます。</p>
+      <div id="calEmpty" class="note">上の「出産予定日」を入力すると、カレンダーに予定が表示されます。</div>
+      <div id="calBox" hidden>
+        <div class="cal-wrap">
+        <div class="cal-head">
+          <button class="cal-nav" id="calPrev" aria-label="前の月">‹</button>
+          <div class="cal-tt"><p class="cal-title" id="calTitle"></p><p class="cal-sub" id="calSub"></p></div>
+          <button class="cal-nav" id="calNext" aria-label="次の月">›</button>
+        </div>
+        <div class="cal-legend">
+          <span><i class="lg start"></i>開始</span><span><i class="lg dl"></i>期限</span><span><i class="lg duedot"></i>予定日</span><span><i class="lg wk"></i>週の始まり</span><span>🩺 健診</span>
+        </div>
+        <div class="cal-grid" id="calGrid" role="grid"></div>
+        </div>
+        <h3 class="sec" id="calListTitle"></h3>
+        <div id="calList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-apply" role="tabpanel" aria-labelledby="t-apply">
+    <div class="wrap">
+      <h2>産前・産後の申請リスト</h2>
+      <p class="desc">役所・勤務先・病院に出す書類だけを、提出する順に並べています。期限があるものは特に注意。</p>
+      <div class="progress"><div class="bar"><i id="barApply"></i></div><span id="countApply"></span></div>
+      <ul class="deadline-list" id="applyList"></ul>
+    </div>
+  </section>
+
+  <section class="panel" id="p-money" role="tabpanel" aria-labelledby="t-money">
+    <div class="wrap" id="moneyWrap"></div>
+  </section>
+
+  <section class="panel" id="p-contact" role="tabpanel" aria-labelledby="t-contact">
+    <div class="wrap" id="contactWrap"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>国の制度は2026年10月時点の情報をもとにしています。「AI参考情報」と表示された自治体の情報は、Claudeが一般的な知識から作成したもので、最新でない・誤っている可能性があります。手続き前に必ず自治体の公式サイトや窓口で確認してください。</p>
+    <button class="reset" id="reset">入力とチェックをすべてリセット</button>
+  </div>
+</footer>
+
+<script>
+const PREFS = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"];
+
+// 公式情報を確認済みの自治体
+const PRESETS = {
+  "福島県/会津若松市": {
+    source:"verified",
+    offices:{pregnancy:"健康増進課", birth:"市民課（本庁舎1階）", allowance:"こども家庭課", medical:"市役所"},
+    medical:{age:"18歳の年度末まで", cost:"通院・入院とも自己負担なし", income:"所得制限なし"},
+    extras:[{name:"オンライン事前作成「ゆびナビぷらす」", summary:"妊娠届・出生届・児童手当の申請書を自宅で事前に作れます。"}],
+    postpartum:"医療機関や助産所などで、宿泊・日帰りの産後ケアを受けられます。",
+    contacts:[
+      {name:"会津若松市役所（代表）", tel:"0242-39-1111", note:"健康増進課（妊娠届・母子手帳・妊婦支援給付金・健診・産後ケア）へはこちらから。本庁舎：東栄町3番46号"},
+      {name:"こども家庭課 給付グループ", tel:"0242-39-1243", note:"児童手当など"},
+      {name:"市民課（本庁舎1階）", note:"出生届。平日8:30〜17:15、土日祝9:00〜17:00も戸籍届は受付。北会津・河東支所、大戸・湊市民センターでも平日に提出できます。"}
+    ],
+    links:[
+      {label:"会津若松市「妊娠・出産」", url:"https://www.city.aizuwakamatsu.fukushima.jp/bunya/ninshin-shussan/"},
+      {label:"母子健康手帳・妊婦健診受診票の交付", url:"https://www.city.aizuwakamatsu.fukushima.jp/docs/2015033100038/"},
+      {label:"出生届出をされる方へ", url:"https://www.city.aizuwakamatsu.fukushima.jp/docs/2016120600042/"},
+      {label:"妊娠・出生のデジタル申請", url:"https://www.city.aizuwakamatsu.fukushima.jp/docs/2023102300012/"}
+    ]
+  }
+};
+
+const STAGES = [
+  {id:"early", icon:"🌱", name:"妊娠初期", label:"〜15週（〜4か月）", w:[0,15]},
+  {id:"mid",   icon:"🌷", name:"妊娠中期", label:"16〜27週（5〜7か月）", w:[16,27]},
+  {id:"late",  icon:"🌙", name:"妊娠後期", label:"28週〜出産（8〜10か月）", w:[28,41]},
+  {id:"birth", icon:"👶", name:"出産〜2週間", label:"期限つきの手続きが集中", d:[0,14]},
+  {id:"after", icon:"🍼", name:"産後1か月〜", label:"健診・訪問・予防接種", d:[15,400]},
+];
+
+/* ---------- 状態 ---------- */
+const DAY = 864e5;
+const K = {due:"birthGuide.due", chk:"birthGuide.checks", set:"birthGuide.settings", munis:"birthGuide.munis.", local:"birthGuide.local."};
+const store = {
+  get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+  set(k,v){try{localStorage.setItem(k,v)}catch(e){}},
+  del(k){try{localStorage.removeItem(k)}catch(e){}},
+  json(k,fb){try{return JSON.parse(localStorage.getItem(k))??fb}catch(e){return fb}}
+};
+// 以前の版の保存データを引き継ぐ
+if(!store.get(K.due) && store.get("aizuBirth.due")) store.set(K.due, store.get("aizuBirth.due"));
+if(!store.get(K.chk) && store.get("aizuBirth.checks")){
+  store.set(K.chk, store.get("aizuBirth.checks"));
+  if(!store.get(K.set)) store.set(K.set, JSON.stringify({pref:"福島県",muni:"会津若松市",order:"2",mama:"home"}));
+}
+
+let checks = store.json(K.chk, {});
+let S = Object.assign({pref:"",muni:"",order:"2",mama:"home"}, store.json(K.set, {}));
+let due = store.get(K.due) ? parseDate(store.get(K.due)) : null;
+let L = null; // 自治体の情報
+let sample = null;
+
+/* ---------- ユーティリティ ---------- */
+function parseDate(s){const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}
+const WD = "日月火水木金土";
+function fmt(dt){return `${dt.getMonth()+1}/${dt.getDate()}(${WD[dt.getDay()]})`}
+function today(){const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate())}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function hall(){
+  const m = S.muni||"";
+  if(/区$/.test(m) && S.pref==="東京都") return "区役所";
+  if(/市$/.test(m)) return "市役所";
+  if(/町$/.test(m)) return "町役場";
+  if(/村$/.test(m)) return "村役場";
+  return "市区町村の役所";
+}
+function office(key){
+  const def = {pregnancy:"母子保健の窓口（保健センターなど）", birth:"戸籍の窓口", allowance:"児童手当の窓口", medical:"子ども医療費の窓口"}[key];
+  const v = L && L.offices && L.offices[key];
+  if(v && v!=="不明") return /役所|役場|センター|市役所/.test(v) ? v : `${hall()} ${v}`;
+  return `${hall()}の${def}`;
+}
+function searchUrl(q){return "https://www.google.com/search?q="+encodeURIComponent(q)}
+
+/* ---------- やること（状況に応じて組み立て） ---------- */
+function buildTasks(){
+  const second = S.order!=="1", work = S.mama==="employee";
+  const T = [];
+  const add = o => T.push(o);
+  add({id:"e1",s:"early",w:[5,8],t:"産婦人科で妊娠と心拍を確認",kind:[],
+    p:"心拍が確認できると妊娠届が出せます。妊娠届出書に病院名・予定日を書くので診察券を持ち帰りましょう。"});
+  add({id:"e2",s:"early",w:[8,11],t:"妊娠届を出して母子健康手帳をもらう",kind:["apply"],
+    p:"保健師・助産師との面談があり、妊婦健診の受診票もまとめてもらえます。",
+    where:office("pregnancy"),bring:"マイナンバーカード、本人確認書類、診察券"});
+  add({id:"e3",s:"early",w:[8,11],t:"妊婦支援給付金（1回目・5万円）を申請",kind:["apply","money"],
+    p:"妊娠届・面談のときに案内されます。口座情報を用意しておくとその場で書けます。",where:office("pregnancy")});
+  add({id:"e4",s:"early",w:[8,13],t:"出産する病院を決めて分娩予約",kind:[],
+    p:"分娩予約を早めに締め切る病院もあります。里帰り出産にするかもこの時期に決めます。"});
+  if(work) add({id:"w1",s:"early",w:[10,15],t:"ママ：職場に妊娠を報告",kind:["mama"],
+    p:"つわりで通勤がつらいときは、医師に「母性健康管理指導事項連絡カード」を書いてもらうと、時差出勤や休業などの配慮を求められます。"});
+  add({id:"e5",s:"early",w:[10,15],t:"パパ：職場に報告し、育休を取る意向を伝える",kind:["papa"],
+    p:"会社には妊娠・出産を申し出た社員に育休制度を個別に説明する義務があります。早めに伝えるほど調整がしやすくなります。"});
+  if(second) add({id:"e6",s:"early",w:[8,15],t:"健診のときの上の子の預け先を考える",kind:[],
+    p:"健診は月1回ほど。家族に頼めない日は自治体の一時預かりやファミリー・サポートも選択肢です。"});
+
+  add({id:"m1",s:"mid",w:[16,27],t:"妊婦健診を受ける（受診票を毎回提出）",kind:["money"],
+    p:"この時期は4週に1回が目安。受診票を出し忘れると助成が受けられないことがあります。"});
+  add({id:"m2",s:"mid",w:[18,27],t:"パパ：育休の期間を決めて会社と相談",kind:["papa","money"],
+    p: work
+      ? "産後8週以内の「産後パパ育休」と、ママの育休をそれぞれ14日以上取ると、最大28日間の給付が手取りほぼ10割になります。2回に分けて取ることもできます。"
+      : "産後8週以内に「産後パパ育休」を14日以上取ると、給付が手取りほぼ10割になります（ママが雇用保険に入っていない場合はパパだけの取得で対象）。2回に分けて取ることもできます。"});
+  if(work) add({id:"w2",s:"mid",w:[20,27],t:"ママ：産休・育休の申出と復職時期の相談",kind:["mama","apply"],
+    p:"産前休業は予定日の6週間前から取れます。育休は開始の1か月前までに申出。保育園の入園時期も見すえて復職時期を考えます。",where:"ママの勤務先"});
+  add({id:"m3",s:"mid",w:[20,27],t:"両親学級・マタニティ教室に申し込む",kind:[],
+    p:"病院や自治体の教室。沐浴や抱っこの練習ができます。"});
+  add({id:"m4",s:"mid",w:[20,27],t:"出産費用の見込みと直接支払制度を病院で確認",kind:["money"],
+    p:"費用が50万円を超えそうか、個室代などオプションはいくらかを確認しておくと安心です。"});
+  add({id:"m5",s:"mid",w:[22,27],t: second?"ベビー用品を準備（上の子のお下がりを点検）":"ベビー用品を準備",kind:[],
+    p: second?"チャイルドシートは2台必要になることも。ベビーカーは上の子と一緒に使えるかも確認を。":"肌着・おむつ・チャイルドシートなど。退院時に車で帰るならチャイルドシートは必須です。"});
+  add({id:"m6",s:"mid",w:[20,27],t:"里帰りするなら受診票の扱いを確認",kind:["apply"],
+    p:"住んでいる都道府県の外の病院では受診票が使えず、後で払い戻し申請になることがあります。",where:office("pregnancy")});
+
+  add({id:"l1",s:"late",w:[32,36],t:"胎児の数の届出 → 妊婦支援給付金（2回目・5万円）",kind:["apply","money"],
+    p:"出産予定日の8週間前（32週ごろ）から届出できます。案内の時期・方法は自治体ごとに違うので確認を。申請期限は予定日8週間前から2年です。",where:office("pregnancy")});
+  if(work) add({id:"w3",s:"late",w:[34,34],t:"ママ：産前休業スタート（予定日の6週間前）",kind:["mama"],
+    p:"本人が希望すれば予定日直前まで働くこともできます。休業中の健康保険・厚生年金の保険料は免除されます。"});
+  add({id:"l2",s:"late",w:[32,36],t: second?"出産時の上の子の預け先を確定":"入院中の連絡体制を決める",kind:[],
+    p: second?"夜中の陣痛も想定して、第1候補・第2候補を決めておきます。上の子に「入院」を絵本などで伝えておくのも◎。":"陣痛が来たときに誰へ連絡するか、パパが不在のときはどうするかを決めておきます。"});
+  add({id:"l3",s:"late",w:[32,35],t:"入院バッグを準備・陣痛時の移動手段を決める",kind:[],
+    p:"陣痛タクシーの事前登録もしておくと安心です。"});
+  add({id:"l4",s:"late",w:[34,37],t:"病院で直接支払制度の合意書にサイン",kind:["apply","money"],
+    p:"出産育児一時金50万円を病院へ直接払ってもらう手続きです。保険証（マイナ保険証）の情報が必要です。",where:"出産する病院"});
+  add({id:"l5",s:"late",w:[34,36],t:"パパ：育休の申出（遅くとも開始の1か月前）",kind:["papa","apply"],
+    p:"通常の育休は1か月前、産後パパ育休は原則2週間前までに会社へ申し出ます。予定日より早く生まれることもあるので余裕をもって。",where:"パパの勤務先"});
+  add({id:"l6",s:"late",w:[36,39],t:"名前の候補を決めておく",kind:[],
+    p:"出生届は生まれた日を含めて14日以内。候補の漢字が名前に使えるか（人名用漢字か）も確認しておきましょう。"});
+
+  add({id:"b1",s:"birth",d:[0,13],t:"出生届を出す（14日以内）",kind:["apply"],
+    p:"出生証明書は病院で記入してもらえます。夜間・休日の受付は自治体によって異なります。",where:office("birth"),bring:"出生届（病院記入済み）、母子健康手帳",due:"生まれた日を含めて14日以内"});
+  add({id:"b2",s:"birth",d:[1,15],t: second?"児童手当の額改定認定請求（15日以内）":"児童手当の認定請求（15日以内）",kind:["apply","money"],
+    p: second?"上の子がすでに受給中なら、新規ではなく「額改定」の手続きです。出生届と同じ日に出すのが確実。公務員の場合は勤務先で手続きします。":"出生届と同じ日に出すのが確実。遅れるとその月の分がもらえません。公務員の場合は勤務先で手続きします。",
+    where:office("allowance"),due:"出生日の翌日から15日以内"});
+  add({id:"b3",s:"birth",d:[0,14],t:"赤ちゃんを健康保険に加入させる",kind:["apply"],
+    p:"会社員なら扶養に入れる側の勤務先へ。国民健康保険なら役所で手続きします。",where:"勤務先 または 役所の国民健康保険窓口"});
+  add({id:"b4",s:"birth",d:[3,30],t:"子ども医療費の受給者証を申請",kind:["apply","money"],
+    p:"健康保険の加入が終わったら申請します。対象年齢や自己負担は自治体ごとに違います（「給付金・助成」タブ参照）。",where:office("medical")});
+  add({id:"b5",s:"birth",d:[0,14],t:"出生連絡票（赤ちゃん訪問のはがき）を出す",kind:["apply"],
+    p:"母子手帳と一緒にもらった用紙。保健師・助産師の家庭訪問につながります。",where:office("pregnancy")});
+  add({id:"b6",s:"birth",d:[7,60],t:"出産育児一時金の差額を請求（費用が50万円未満のとき）",kind:["apply","money"],
+    p:"病院の明細書と直接支払制度の合意書のコピーを添えて請求します。",where:"加入している健康保険"});
+  if(work) add({id:"w4",s:"after",d:[57,120],t:"ママ：出産手当金・育休給付金の申請",kind:["mama","money","apply"],
+    p:"出産手当金は産後56日を過ぎてから健康保険へ。育休給付金は勤務先経由でハローワークへ。",where:"ママの勤務先"});
+  add({id:"b7",s:"birth",d:[0,56],t:"パパ：育休給付金の申請",kind:["papa","money","apply"],
+    p:"申請は勤務先がハローワークへ行うのが一般的。母子手帳の出生届出済証明のページのコピーなどを求められます。",where:"パパの勤務先"});
+  if(S.mama==="self") add({id:"s1",s:"late",w:[28,36],t:"ママ：国民年金の産前産後免除を届け出",kind:["apply","money"],
+    p:"国民年金第1号被保険者は、予定月の前月から4か月分の保険料が免除されます。予定日の6か月前から届出できます。",where:`${hall()}の国民年金窓口`});
+
+  add({id:"a1",s:"after",d:[28,40],t:"1か月健診（赤ちゃん）と産婦健診（ママ）",kind:["money"],
+    p:"受診票があれば忘れずに。産後2週間健診がある病院もあります。"});
+  add({id:"a2",s:"after",d:[28,120],t:"赤ちゃん訪問（乳児家庭全戸訪問）を受ける",kind:[],
+    p: second?"産後の体調や、上の子の赤ちゃん返りの相談などもしてOK。":"授乳や睡眠など、気になることは何でも相談してOK。"});
+  add({id:"a3",s:"after",d:[30,60],t:"予防接種のスケジュールを立てる（生後2か月から）",kind:[],
+    p:"生後2か月から同時接種が始まります。小児科で予約を。"});
+  add({id:"a4",s:"after",d:[15,365],t:"つらいときは産後ケアを利用",kind:["apply"],
+    p:(L&&L.postpartum&&L.postpartum!=="不明"?L.postpartum+" ":"")+"心身の回復や授乳の相談ができます。遠慮なく相談を。",where:office("pregnancy")});
+  add({id:"a5",s:"after",d:[100,400],t:"翌年2〜3月：確定申告で医療費控除",kind:["money","apply"],
+    p:"出産の年の医療費をまとめて申告。領収書・交通費のメモを保管しておきましょう。",where:"税務署（e-Taxも可）"});
+  return T;
+}
+let TASKS = buildTasks();
+
+/* ---------- 日付 ---------- */
+function weekStart(w){return new Date(due.getTime()-(280-w*7)*DAY)}
+function taskRange(task){
+  if(!due) return null;
+  if(task.w) return [weekStart(task.w[0]), new Date(weekStart(task.w[1]+1).getTime()-DAY)];
+  return [new Date(due.getTime()+task.d[0]*DAY), new Date(due.getTime()+task.d[1]*DAY)];
+}
+function rangeLabel(task){
+  const base = task.w ? (task.w[0]===task.w[1]?`${task.w[0]}週`:`${task.w[0]}〜${task.w[1]}週`) : (task.d[0]===0?"出産後":`産後${task.d[0]}日〜`);
+  const r = taskRange(task);
+  return r ? `${base}・${fmt(r[0])}〜${fmt(r[1])}` : base;
+}
+/* ---------- 妊婦健診 ---------- */
+const KENSHIN_W = [8,12,16,20,24,26,28,30,32,34,36,37,38,39];
+let ksOverride = store.json("birthGuide.kenshin", {});
+function kenshinList(){
+  if(!due) return [];
+  const list = KENSHIN_W.map((w,i)=>({id:"k"+(i+1), label:`妊婦健診 ${i+1}回目`, sub:`${w}週ごろ`, def:weekStart(w)}));
+  list.push({id:"kp2", label:"産後2週間健診（ママ）", sub:"産後2週間ごろ", def:new Date(due.getTime()+14*DAY)});
+  list.push({id:"kp1m", label:"1か月健診（ママと赤ちゃん）", sub:"産後1か月ごろ", def:new Date(due.getTime()+30*DAY)});
+  return list.map(k=>{
+    const o = ksOverride[k.id];
+    return Object.assign(k, {date: o ? parseDate(o) : k.def, custom: !!o});
+  });
+}
+function ymd(dt){return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,"0")}-${String(dt.getDate()).padStart(2,"0")}`}
+function ksItemHtml(k){
+  return `<div class="cal-item ks${checks[k.id]?" done":""}">
+    <span class="when">${fmt(k.date)}</span>
+    <span class="what"><span class="ksname">🩺 ${esc(k.label)}</span>
+      <span class="ksmeta">${k.custom?`<b class="ks-res">予約日</b>`:`<span class="ks-def">目安（${esc(k.sub)}）</span>`}</span>
+      <span class="ksrow">
+        <label class="ksdate">予約日<input type="date" data-ks="${k.id}" value="${k.custom?ymd(k.date):""}"></label>
+        ${k.custom?`<button class="mini" data-ksreset="${k.id}">目安に戻す</button>`:""}
+        <label class="ksdone"><input type="checkbox" data-ksdone="${k.id}" ${checks[k.id]?"checked":""}>受診済み</label>
+      </span>
+    </span></div>`;
+}
+function pregInfo(dt){
+  if(!due) return null;
+  const days = 280 - Math.round((due - dt)/DAY);
+  const w = Math.floor(days/7), d = ((days%7)+7)%7;
+  return {days, w, d, mo: Math.min(10, Math.floor(w/4)+1)};
+}
+function currentStage(){
+  if(!due) return null;
+  const days = 280 - Math.round((due - today())/DAY);
+  if(days < 0) return null;
+  const w = Math.floor(days/7);
+  if(w<=15) return "early"; if(w<=27) return "mid"; if(days<280) return "late";
+  return days-280<=14 ? "birth" : "after";
+}
+
+/* ---------- 描画：やること ---------- */
+function tagsHtml(task){
+  let h = "";
+  if(task.kind.includes("apply")) h += `<span class="tag apply">申請</span>`;
+  if(task.kind.includes("money")) h += `<span class="tag money">お金</span>`;
+  if(task.kind.includes("papa")) h += `<span class="tag papa">パパ</span>`;
+  if(task.kind.includes("mama")) h += `<span class="tag mama">ママ</span>`;
+  h += `<span class="tag date">${rangeLabel(task)}</span>`;
+  return h;
+}
+function taskHtml(task){
+  const done = !!checks[task.id];
+  let dl = "";
+  if(task.where) dl += `<dt>どこで</dt><dd>${esc(task.where)}</dd>`;
+  if(task.bring) dl += `<dt>持ち物</dt><dd>${esc(task.bring)}</dd>`;
+  if(task.due) dl += `<dt>期限</dt><dd>${esc(task.due)}</dd>`;
+  return `<details class="task${done?" done":""}" data-id="${task.id}">
+    <summary>
+      <input type="checkbox" aria-label="${esc(task.t)}を完了にする" ${done?"checked":""}>
+      <span class="t"><span class="title">${esc(task.t)}</span><span class="meta">${tagsHtml(task)}</span></span>
+      <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </summary>
+    <div class="body"><p>${esc(task.p)}</p>${dl?`<dl>${dl}</dl>`:""}</div>
+  </details>`;
+}
+function sortTasks(arr){return arr.slice().sort((a,b)=>(a.w?a.w[0]:100+a.d[0])-(b.w?b.w[0]:100+b.d[0]))}
+function renderStages(){
+  const cur = currentStage();
+  document.getElementById("stages").innerHTML = STAGES.map(st=>{
+    const tasks = sortTasks(TASKS.filter(t=>t.s===st.id));
+    let range = st.label;
+    if(due && st.w){
+      const a = weekStart(st.w[0]), b = st.id==="late" ? due : new Date(weekStart(st.w[1]+1).getTime()-DAY);
+      range += `・${fmt(a)}〜${fmt(b)}`;
+    }
+    return `<div class="stage${cur===st.id?" current":""}">
+      <span class="dot" aria-hidden="true">${st.icon}</span>
+      <h3>${st.name}</h3><p class="range">${range}</p>
+      ${tasks.map(taskHtml).join("")}
+    </div>`;
+  }).join("");
+}
+function renderApply(){
+  const groups = [["妊娠中に出すもの",["early","mid","late"]],["生まれてすぐ（期限あり）",["birth"]],["産後しばらくして",["after"]]];
+  document.getElementById("applyList").innerHTML = groups.map(([name,ss])=>{
+    const items = sortTasks(TASKS.filter(t=>ss.includes(t.s) && t.kind.includes("apply")));
+    return `<li class="group">${name}</li>` + items.map(t=>`<li>${taskHtml(t)}</li>`).join("");
+  }).join("");
+}
+function renderNow(){
+  const box = document.getElementById("now");
+  if(!due){box.classList.remove("show");return}
+  box.classList.add("show");
+  const days = 280 - Math.round((due - today())/DAY);
+  const wt = document.getElementById("weekText");
+  if(days < 0) wt.innerHTML = `予定日まであと <b>${Math.round((due-today())/DAY)}</b> 日`;
+  else if(days < 280) wt.innerHTML = `いま妊娠 <b>${Math.floor(days/7)}</b>週${days%7}日`;
+  else wt.innerHTML = `予定日から <b>${days-280}</b> 日`;
+  const t0 = today().getTime();
+  const upcoming = TASKS.filter(t=>!checks[t.id]).map(t=>({t,r:taskRange(t)}))
+    .filter(x=>x.r[1].getTime() >= t0 - 7*DAY)
+    .sort((a,b)=>a.r[0]-b.r[0]).slice(0,3);
+  const nk = kenshinList().filter(k=>!checks[k.id] && k.date >= today()).sort((a,b)=>a.date-b.date)[0];
+  const nkHtml = nk ? `<li class="nk"><span>🩺 次の${esc(nk.label)}${nk.custom?"":"（目安）"}</span><span>${fmt(nk.date)}</span></li>` : "";
+  document.getElementById("nextList").innerHTML = nkHtml + (upcoming.length
+    ? upcoming.map(x=>`<li><span>${esc(x.t.t)}</span><span>${x.r[0].getTime()<=t0?"今の時期":fmt(x.r[0])+"〜"}</span></li>`).join("")
+    : `<li><span>チェックの残っている項目はありません</span><span></span></li>`);
+}
+function renderProgress(){
+  const all = TASKS.length, doneAll = TASKS.filter(t=>checks[t.id]).length;
+  const ap = TASKS.filter(t=>t.kind.includes("apply")), doneAp = ap.filter(t=>checks[t.id]).length;
+  document.getElementById("barStage").style.width = (doneAll/all*100)+"%";
+  document.getElementById("countStage").textContent = `${doneAll} / ${all} 完了`;
+  document.getElementById("barApply").style.width = (doneAp/ap.length*100)+"%";
+  document.getElementById("countApply").textContent = `${doneAp} / ${ap.length} 完了`;
+}
+
+/* ---------- 描画：カレンダー ---------- */
+let calMonth = null, calSel = null;
+function sameDay(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate()}
+function dayEvents(d){
+  const ev = [];
+  TASKS.forEach(task=>{
+    const r = taskRange(task);
+    if(sameDay(r[0],d)) ev.push({task,type:"start"});
+    else if(task.due && sameDay(r[1],d)) ev.push({task,type:"dl"});
+  });
+  return ev;
+}
+function renderCal(){
+  const empty = document.getElementById("calEmpty"), box = document.getElementById("calBox");
+  if(!due){empty.hidden=false;box.hidden=true;return}
+  empty.hidden=true;box.hidden=false;
+  if(!calMonth){
+    const start = new Date(due.getTime()-280*DAY);
+    const base = today() < start ? start : today();
+    calMonth = new Date(base.getFullYear(), base.getMonth(), 1);
+  }
+  const y = calMonth.getFullYear(), m = calMonth.getMonth();
+  document.getElementById("calTitle").textContent = `${y}年${m+1}月`;
+  {
+    const a = pregInfo(new Date(y,m,1)), b = pregInfo(new Date(y,m+1,0));
+    let sub = "";
+    const inPreg = x => x && x.days>=0 && x.days<294;
+    if(inPreg(a)||inPreg(b)){
+      const s = inPreg(a)?a:pregInfo(new Date(due.getTime()-280*DAY)), e = inPreg(b)?b:pregInfo(new Date(due.getTime()+13*DAY));
+      sub = `妊娠${s.w}〜${e.w}週・${s.mo===e.mo?s.mo:s.mo+"〜"+e.mo}か月`;
+    }else if(b && b.days>=294){ sub = "産後"; }
+    document.getElementById("calSub").textContent = sub;
+  }
+  const first = new Date(y,m,1).getDay(), last = new Date(y,m+1,0).getDate();
+  const t0 = today();
+  const KS = kenshinList();
+  let html = WD.split("").map((w,i)=>`<div class="cal-dow${i===0?" sun":i===6?" sat":""}">${w}</div>`).join("");
+  for(let i=0;i<first;i++) html += `<div class="cal-day blank" aria-hidden="true"></div>`;
+  for(let d=1; d<=last; d++){
+    const dt = new Date(y,m,d), ev = dayEvents(dt);
+    const isDue = sameDay(dt,due);
+    const ksDay = KS.filter(k=>sameDay(k.date,dt));
+    const active = TASKS.some(task=>{const r=taskRange(task);return !checks[task.id] && dt>=r[0] && dt<=r[1]});
+    let dots = ev.slice(0,4).map(e=>`<i class="${e.type==="dl"?"dl":""}"></i>`).join("");
+    if(isDue) dots = `<i class="duedot"></i>` + dots;
+    const cls = ["cal-day", active?"active":"", sameDay(dt,t0)?"today":"", isDue?"dueday":"", ksDay.length?"ksday":"", ksDay.some(k=>checks[k.id])?"ksdone":""].join(" ");
+    const label = `${m+1}月${d}日${isDue?"、出産予定日":""}${ksDay.length?"、"+ksDay.map(k=>k.label).join("・"):""}${ev.length?`、予定${ev.length}件`:""}`;
+    const pi = pregInfo(dt);
+    let wk = "";
+    if(pi && pi.days>=0 && pi.days<294 && pi.d===0){
+      wk = (pi.w%4===0 && pi.w<=36) ? `<span class="wk mo">${pi.mo}か月</span>` : `<span class="wk">${pi.w}週</span>`;
+    }
+    const plabel = pi && pi.days>=0 && pi.days<294 ? `、妊娠${pi.w}週${pi.d}日（${pi.mo}か月）` : "";
+    html += `<button class="${cls}" data-d="${d}" aria-pressed="${!!(calSel&&sameDay(calSel,dt))}" aria-label="${label}${plabel}"><span class="n">${d}</span><span class="dots">${dots}</span>${wk}</button>`;
+  }
+  document.getElementById("calGrid").innerHTML = html;
+  renderCalList();
+}
+function renderCalList(){
+  const y = calMonth.getFullYear(), m = calMonth.getMonth();
+  let items, title;
+  if(calSel){
+    const pi = pregInfo(calSel);
+    const ps = pi && pi.days>=0 && pi.days<294 ? `・妊娠${pi.w}週${pi.d}日（${pi.mo}か月）` : "";
+    title = `${fmt(calSel)}${sameDay(calSel,due)?"（出産予定日）":""}${ps}`;
+    items = TASKS.map(t=>({t,r:taskRange(t)})).filter(x=>calSel>=x.r[0]&&calSel<=x.r[1]);
+    document.getElementById("calListTitle").dataset.sub = "この日に取りかかれること";
+  }else{
+    title = `${m+1}月の健診・始まること・期限`;
+    const ms = new Date(y,m,1), me = new Date(y,m+1,0);
+    items = TASKS.map(t=>({t,r:taskRange(t)})).filter(x=>(x.r[0]>=ms&&x.r[0]<=me)||(x.t.due&&x.r[1]>=ms&&x.r[1]<=me));
+  }
+  items.sort((a,b)=>a.r[0]-b.r[0]);
+  const KS = kenshinList().filter(k=> calSel ? sameDay(k.date,calSel) : (k.date.getFullYear()===y && k.date.getMonth()===m));
+  const lt = document.getElementById("calListTitle");
+  lt.innerHTML = esc(title) + (calSel ? `<small>この日に取りかかれること</small>` : "");
+  const ksHtml = KS.length ? `<div class="ks-group">${KS.map(ksItemHtml).join("")}</div>` : "";
+  document.getElementById("calList").innerHTML = ksHtml + (items.length ? items.map(x=>{
+    const showDl = x.t.due ? `<b>期限 ${fmt(x.r[1])}</b>` : "";
+    return `<div class="cal-item${checks[x.t.id]?" done":""}"><span class="when">${fmt(x.r[0])}〜</span><span class="what">${esc(x.t.t)}${showDl}</span></div>`;
+  }).join("") : (KS.length ? "" : `<p class="desc">この${calSel?"日":"月"}に始まる項目はありません。</p>`));
+}
+
+
+/* ---------- 描画：成長 ---------- */
+const GROW = [
+  null,
+  {fruit:"けしの実",emoji:"🌱",len:"—",wt:"—",
+   baby:"受精卵が子宮に着床するころ。まだ妊娠に気づかないことがほとんどです。",
+   mama:"生理の予定日が近づきます。体温が高い状態が続くことも。",
+   papa:"お酒やたばこの煙から、ママの体を守る準備を。"},
+  {fruit:"さくらんぼ",emoji:"🍒",len:"約2cm",wt:"約4g",
+   baby:"心臓が動き始め、心拍が確認できるように。脳や神経のもとがつくられます。",
+   mama:"つわりが始まる人が多い時期。眠気やだるさも出やすくなります。",
+   papa:"においの強い料理を控えたり、家事を多めに引き受けたりするだけでも助けになります。"},
+  {fruit:"いちご〜レモン",emoji:"🍋",len:"約9cm",wt:"約20g",
+   baby:"手足の指ができ、顔つきも人らしく。胎児と呼ばれるようになります。",
+   mama:"つわりのピーク。食べられるものを、食べられるときに。",
+   papa:"妊娠届や母子手帳の手続きに付き添うと、制度の説明を一緒に聞けます。"},
+  {fruit:"りんご",emoji:"🍎",len:"約16cm",wt:"約100g",
+   baby:"胎盤ができあがり、骨や筋肉がしっかりしてきます。性別がわかることも。",
+   mama:"つわりが落ち着き、体調が安定してくる人が多い時期です。",
+   papa:"育休をいつ取るか、職場と相談を始めましょう。"},
+  {fruit:"バナナ",emoji:"🍌",len:"約25cm",wt:"約300g",
+   baby:"髪の毛や爪が生え、耳が聞こえ始めます。胎動を感じることも。",
+   mama:"おなかのふくらみが目立ってきます。安定期に入るのもこのころ。",
+   papa:"おなかに声をかけてみましょう。声は届き始めています。"},
+  {fruit:"マンゴー",emoji:"🥭",len:"約30cm",wt:"約700g",
+   baby:"まぶたが分かれ、羊水の中でくるくる動きます。",
+   mama:"胎動がはっきりして、腰や背中が痛みやすくなります。",
+   papa:"両親学級に一緒に参加して、沐浴や抱っこの練習を。"},
+  {fruit:"キャベツ",emoji:"🥬",len:"約38cm",wt:"約1.2kg",
+   baby:"目を開けたり閉じたりできるように。脳がぐんぐん発達します。",
+   mama:"おなかが張りやすくなる時期。むくみや足のつりにも注意。",
+   papa:"重い物の買い物や上の子の相手など、体を使う家事をバトンタッチ。"},
+  {fruit:"パイナップル",emoji:"🍍",len:"約43cm",wt:"約1.8kg",
+   baby:"皮下脂肪がついてふっくら。頭が下を向き始めます。",
+   mama:"おなかが大きくなり、息切れや寝苦しさを感じやすくなります。",
+   papa:"入院時の連絡方法や、陣痛タクシーの登録を確認しておきましょう。"},
+  {fruit:"メロン",emoji:"🍈",len:"約47cm",wt:"約2.5kg",
+   baby:"肺などの機能がほぼ整い、生まれる準備が進みます。",
+   mama:"胃が圧迫されて食事が入りにくいことも。少しずつ回数を分けて。",
+   papa:"名前の候補を決めて、出生届の準備を。"},
+  {fruit:"すいか",emoji:"🍉",len:"約50cm",wt:"約3kg",
+   baby:"いつ生まれてもよい状態。骨盤の中へ下りてきます。",
+   mama:"おなかの張りや前駆陣痛が起こることも。入院バッグは手の届くところに。",
+   papa:"いつでも駆けつけられるように。生まれたら出生届と児童手当は期限があります。"},
+];
+const growRange = document.getElementById("growRange");
+let growManual = null;
+function babySvg(w){
+  const W = Math.max(4, Math.min(40, w));
+  const ol = `stroke="#e8a58c" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"`;
+  const skin = "#ffe0cf";
+  const star = (x,y,r,c)=>`<path transform="translate(${x} ${y}) scale(${r})" d="M0 -10 L2.6 -3.2 L10 -3.2 L4 1.4 L6.2 9 L0 4.4 L-6.2 9 L-4 1.4 L-10 -3.2 L-2.6 -3.2 Z" fill="${c}" stroke="${c}" stroke-width="2" stroke-linejoin="round"/>`;
+  const heart = (x,y,r,c)=>`<path transform="translate(${x} ${y}) scale(${r})" d="M0 4 C -6 -2 -10 -6 -6 -9 C -3 -11 -1 -9 0 -7 C 1 -9 3 -11 6 -9 C 10 -6 6 -2 0 4 Z" fill="${c}"/>`;
+
+  const bubble = `
+    <circle cx="100" cy="100" r="90" fill="#ffeef2"/>
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#ffc6d3" stroke-width="5" stroke-dasharray="1 11" stroke-linecap="round"/>
+    <circle cx="100" cy="100" r="76" fill="#fff8f9"/>
+    <path d="M44 74 A58 58 0 0 1 74 40" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <g class="twinkle">${star(38,140,0.7,"#ffd36e")}${star(160,56,0.85,"#ffd36e")}${star(162,148,0.5,"#a9c8f5")}</g>
+    <g class="hearts">${heart(48,108,1,"#ffb3c1")}${heart(150,104,0.8,"#ffb3c1")}${heart(130,40,0.6,"#c9b9ff")}</g>`;
+
+  // 8週未満：まめの赤ちゃん
+  if(W < 8){
+    const s = 0.8 + (W-4)*0.12;
+    return `<svg viewBox="0 0 200 200" role="img" aria-label="妊娠${W}週の赤ちゃんのイメージ">${bubble}
+      <g transform="translate(100 108) scale(${s})"><g class="float">
+        <path d="M0 -26 C -2 -36 -12 -40 -18 -36 C -12 -32 -6 -30 0 -26 Z" fill="#9fdcb8" ${ol} stroke="#6cc3a6" stroke-width="1.8"/>
+        <path d="M0 -26 C 2 -38 14 -42 20 -36 C 14 -32 6 -30 0 -26 Z" fill="#9fdcb8" stroke="#6cc3a6" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M-24 -6 C -24 -24 -8 -28 4 -26 C 20 -24 28 -10 24 6 C 20 22 4 28 -10 24 C -22 20 -24 8 -24 -6 Z" fill="${skin}" ${ol}/>
+        <circle cx="-9" cy="-4" r="2.6" fill="#5b4552"/><circle cx="7" cy="-4" r="2.6" fill="#5b4552"/>
+        <ellipse cx="-15" cy="4" rx="4" ry="2.6" fill="#ffaab5"/><ellipse cx="13" cy="4" rx="4" ry="2.6" fill="#ffaab5"/>
+        <path d="M-3 4 q2 2.4 4 0" stroke="#d2707a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <g transform="translate(18 16)"><path d="M0 4 C -6 -2 -10 -6 -6 -9 C -3 -11 -1 -9 0 -7 C 1 -9 3 -11 6 -9 C 10 -6 6 -2 0 4 Z" fill="#ff7f93">
+          <animateTransform attributeName="transform" type="scale" values="1;1.3;1;1" dur="0.8s" repeatCount="indefinite"/></path></g>
+      </g></g></svg>`;
+  }
+
+  // 8週〜：まるいちびっこ赤ちゃん
+  const s = 0.62 + 0.42*(W-8)/32;
+  const awake = W >= 28;
+  const eyes = awake
+    ? `<g><ellipse cx="-17" cy="-14" rx="4.2" ry="5" fill="#5b4552"/><circle cx="-15.6" cy="-15.8" r="1.7" fill="#fff"/>
+         <ellipse cx="7" cy="-14" rx="4.2" ry="5" fill="#5b4552"/><circle cx="8.4" cy="-15.8" r="1.7" fill="#fff"/></g>`
+    : `<g stroke="#5b4552" stroke-width="2.6" fill="none" stroke-linecap="round">
+         <path d="M-22 -14 q5 4.5 10 0"/><path d="M2 -14 q5 4.5 10 0"/></g>`;
+  const mouth = awake
+    ? `<path d="M-8 -3 q3 4 6 0" stroke="#d2707a" stroke-width="2.2" fill="#ff9aa8" stroke-linecap="round" stroke-linejoin="round"/>`
+    : `<path d="M-9 -3 q2.5 2.5 5 0 q2.5 2.5 5 0" stroke="#d2707a" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+  const curl = W >= 20
+    ? `<path d="M-6 -52 c -2 -8 8 -12 10 -5 c 2 5 -5 7 -6 3" stroke="#b07a5e" stroke-width="2.6" fill="none" stroke-linecap="round"/>`
+    : `<path d="M-4 -52 c 0 -5 5 -7 7 -4" stroke="#c99a82" stroke-width="2.2" fill="none" stroke-linecap="round"/>`;
+  const zzz = awake ? "" : `<g class="zzz" fill="#a993e6" font-family="Zen Maru Gothic, sans-serif" font-weight="900">
+      <text x="30" y="-40" font-size="11">z</text><text x="38" y="-50" font-size="14">z</text><text x="48" y="-62" font-size="17">Z</text></g>`;
+  const sparkle = awake ? `<g fill="#ffd36e">${star(34,-46,0.55,"#ffd36e")}${star(-44,-44,0.4,"#ffd36e")}</g>` : "";
+
+  const baby = `
+    <g transform="translate(100 104) scale(${s})"><g class="float">
+      <!-- からだ -->
+      <ellipse cx="10" cy="26" rx="32" ry="27" fill="${skin}" ${ol}/>
+      <!-- あし -->
+      <ellipse cx="30" cy="48" rx="11" ry="8" fill="${skin}" ${ol}/>
+      <ellipse cx="8" cy="52" rx="11" ry="8" fill="${skin}" ${ol}/>
+      <ellipse cx="32" cy="49" rx="5" ry="3.4" fill="#ffc2c9"/><ellipse cx="10" cy="53" rx="5" ry="3.4" fill="#ffc2c9"/>
+      <!-- あたま -->
+      <circle cx="-5" cy="-14" r="35" fill="${skin}" ${ol}/>
+      ${curl}
+      <!-- かお -->
+      ${eyes}
+      <ellipse cx="-25" cy="-3" rx="6.5" ry="4.2" fill="#ffaab5"/>
+      <ellipse cx="15" cy="-3" rx="6.5" ry="4.2" fill="#ffaab5"/>
+      ${mouth}
+      <!-- おてて -->
+      <ellipse cx="-20" cy="22" rx="9" ry="8" fill="${skin}" ${ol}/>
+      <ellipse cx="2" cy="25" rx="9" ry="8" fill="${skin}" ${ol}/>
+      ${zzz}${sparkle}
+    </g></g>`;
+  return `<svg viewBox="0 0 200 200" role="img" aria-label="妊娠${W}週の赤ちゃんのイメージ">${bubble}${baby}</svg>`;
+}
+
+function renderGrow(){
+  const t0 = today();
+  let curW = null, days = null;
+  if(due){ days = 280 - Math.round((due - t0)/DAY); curW = Math.floor(days/7); }
+  const born = due && days >= 280;
+  const W = growManual ?? (curW!=null && curW>=4 && curW<=40 ? curW : (curW!=null && curW>40 ? 40 : 20));
+  growRange.value = Math.max(4, Math.min(40, W));
+  const mo = Math.min(10, Math.floor(W/4)+1), g = GROW[mo];
+  const isNow = growManual==null && curW!=null && curW>=4 && curW<=40;
+  document.getElementById("growNow").hidden = !(growManual!=null && curW!=null && curW>=4 && curW<=40);
+  let wk = `<span>妊娠</span><b>${W}</b><span>週</span><em>${mo}か月</em>`;
+  if(isNow && due) wk = `<span>いま</span><b>${W}</b><span>週${((days%7)+7)%7}日</span><em>${mo}か月</em>`;
+  document.getElementById("growWeek").innerHTML = wk;
+  document.getElementById("growArt").innerHTML = babySvg(W);
+  document.getElementById("growFruit").innerHTML = `<span class="fe" aria-hidden="true">${g.emoji}</span>${esc(g.fruit)}くらい`;
+  document.getElementById("growChips").innerHTML = mo===1 ? `<span>まだとても小さな命</span>` : `<span>身長 ${g.len}</span><span>体重 ${g.wt}</span><small>${mo}か月の終わりごろの目安</small>`;
+  let cnt = "";
+  if(!due) cnt = `<p>出産予定日を入れると、いまの週数が表示されます。</p>`;
+  else if(born) cnt = `<p>🎉 予定日から${days-280}日。赤ちゃんに会えましたか？</p>`;
+  else{
+    const pct = Math.max(0, Math.min(100, days/280*100));
+    cnt = `<div class="gbar"><i style="width:${pct}%"></i><span class="gbaby" style="left:${pct}%">👶</span></div>
+      <p>予定日まで あと <b>${280-days}</b> 日</p>`;
+  }
+  document.getElementById("growCount").innerHTML = cnt;
+  document.getElementById("growNotes").innerHTML = `
+    <div class="gnote baby"><h3>👶 赤ちゃんの様子</h3><p>${esc(g.baby)}</p></div>
+    <div class="gnote mama"><h3>🤰 ママの体</h3><p>${esc(g.mama)}</p></div>
+    <div class="gnote papa"><h3>🙌 パパにできること</h3><p>${esc(g.papa)}</p></div>`;
+}
+growRange.addEventListener("input",()=>{ growManual = +growRange.value; renderGrow(); });
+document.getElementById("growNow").addEventListener("click",()=>{ growManual = null; renderGrow(); });
+
+/* ---------- 描画：給付金 ---------- */
+function badge(){
+  if(!L) return "";
+  return L.source==="verified" ? `<span class="src ok">公式サイトで確認済み</span>` : `<span class="src ai">AI参考情報・要確認</span>`;
+}
+function renderMoney(){
+  const order = S.order, work = S.mama==="employee";
+  const allowance = order==="3" ? "月3万円（高校卒業まで）" : "0〜3歳未満：月1.5万円";
+  const allowanceSub = order==="3"
+    ? "第3子以降は0歳から高校卒業まで月3万円。きょうだいの数え方には、22歳の年度末までの上の子が含まれます（大学生年代は親が生活費を負担している場合）。"
+    : "3歳〜高校卒業まで：月1万円。";
+  const muniName = S.muni ? `${S.muni}` : "お住まいの自治体";
+  let h = `<h2>給付金・助成のまとめ</h2>
+    <p class="desc">国の制度は全国共通です。地元の制度は${esc(muniName)}の情報を表示しています。</p>
+    <div class="total">
+      <p><small>出産前後に受け取る現金（育休分を除く）</small></p>
+      <p class="big">妊婦支援給付金<br><span style="white-space:nowrap">10万円</span></p>
+      <p><small>＋ 出産費用は出産育児一時金50万円でカバー ＋ 児童手当 ${order==="3"?"月3万円":"月1.5万円（3歳まで）"}</small></p>
+    </div>
+
+    <h3 class="sec">妊娠・出産でもらえるもの（全国共通）</h3>
+    <div class="money-card">
+      <h3>妊婦支援給付金（妊婦のための支援給付）</h3>
+      <p class="amount">合計10万円</p>
+      <p>1回目：妊娠届のころ 5万円 ／ 2回目：予定日の8週間前以降に「胎児の数の届出」をして 胎児1人につき5万円。所得制限なし。</p>
+      <p class="how">申請先：${esc(office("pregnancy"))}</p>
+    </div>
+    <div class="money-card">
+      <h3>妊婦健診の公費助成</h3>
+      <p class="amount">健診費の大部分</p>
+      <p>母子手帳と一緒にもらう受診票を病院に出すと、健診費が助成されます。助成の回数や金額の上限は自治体ごとに違います。</p>
+      <p class="how">里帰り出産で受診票が使えない病院にかかる場合は、後から払い戻しの手続きになることがあります。</p>
+    </div>
+    <div class="money-card">
+      <h3>出産育児一時金</h3>
+      <p class="amount">50万円</p>
+      <p>加入している健康保険から出ます（扶養に入っている場合は扶養している人の保険から）。「直接支払制度」を使えば病院に直接払われ、窓口では差額だけ払えばOK。費用が50万円未満なら差額を請求できます。</p>
+    </div>
+    <div class="note"><b>出産費用の無償化について：</b>2026年5月に改正健康保険法が成立し、正常分娩の費用を保険で全額まかなう新制度ができます。ただし施行は「公布（2026年6月5日）から2年以内」で日付は未定です。予定日が近づいたら病院や健康保険に確認してください。</div>
+
+    <h3 class="sec">生まれた後にもらえるもの（全国共通）</h3>
+    <div class="money-card">
+      <h3>児童手当（${order==="1"?"第1子":order==="2"?"第2子":"第3子以降"}）</h3>
+      <p class="amount">${allowance}</p>
+      <p>${allowanceSub}所得制限なし。偶数月に2か月分ずつ振り込み。${order!=="1"?"上の子がすでに受給中なら「額改定認定請求」になります。":""}</p>
+      <p class="how">期限：出生日の翌日から15日以内 ／ 申請先：${esc(office("allowance"))}</p>
+    </div>`;
+
+  // 地元の制度
+  h += `<h3 class="sec">${esc(muniName)}の制度 ${badge()}</h3>`;
+  if(!L){
+    h += `<div class="money-card gray"><h3>子ども医療費助成</h3><p class="amount">自治体ごとに異なる</p><p>対象年齢・自己負担・所得制限は自治体で大きく違います。上でお住まいの市区町村を選ぶと表示されます。</p></div>`;
+  }else{
+    const md = L.medical||{};
+    h += `<div class="money-card local">
+      <h3>子ども医療費助成</h3>
+      <p class="amount">${esc(md.age||"不明")}</p>
+      <p>${esc([md.cost,md.income].filter(x=>x&&x!=="不明").join("、")||"自己負担・所得制限は要確認")}</p>
+      <p class="how">申請先：${esc(office("medical"))}</p>
+    </div>`;
+    (L.extras||[]).forEach(x=>{
+      h += `<div class="money-card local"><h3>${esc(x.name)}</h3><p>${esc(x.summary)}</p></div>`;
+    });
+    if(L.postpartum && L.postpartum!=="不明") h += `<div class="money-card local"><h3>産後ケア</h3><p>${esc(L.postpartum)}</p></div>`;
+    if(L.caution && L.source!=="verified") h += `<p class="how-note">${esc(L.caution)}</p>`;
+    if(S.muni) h += `<p class="how-note"><a href="${searchUrl(S.pref+" "+S.muni+" 妊娠 出産 子育て 助成")}" target="_blank" rel="noopener">${esc(S.muni)}の公式情報を検索する</a></p>`;
+  }
+
+  // 育休
+  h += `<h3 class="sec">パパが育休を取る場合（会社員・雇用保険加入）</h3>
+    <div class="money-card papa">
+      <h3>出生時育児休業給付金＋出生後休業支援給付金</h3>
+      <p class="amount">給料の約80%（手取りほぼ10割）</p>
+      <p>産後8週以内の「産後パパ育休」は67%が支給され、両親それぞれ14日以上の育休で最大28日分に13%が上乗せされます。${work?"":"<b>ママが雇用保険に入っていない（働いていない・自営業など）場合は、パパだけの取得で上乗せの対象</b>になります。"}</p>
+      <p class="how">育休中は健康保険・厚生年金の保険料も免除。申請は勤務先経由でハローワークへ。</p>
+    </div>
+    <div class="money-card papa">
+      <h3>育児休業給付金</h3>
+      <p class="amount">開始から180日：67% ／ その後：50%</p>
+      <p>産後パパ育休のあとに、通常の育休を続けて取る場合。</p>
+    </div>`;
+
+  // ママ
+  if(work){
+    h += `<h3 class="sec">ママが会社員・公務員の場合</h3>
+    <div class="money-card mama">
+      <h3>出産手当金</h3>
+      <p class="amount">給料（標準報酬日額）の約3分の2</p>
+      <p>産前42日・産後56日のうち仕事を休んだ日について、勤務先の健康保険から支給されます。</p>
+    </div>
+    <div class="money-card mama">
+      <h3>育児休業給付金＋出生後休業支援給付金</h3>
+      <p class="amount">180日まで67% ／ 上乗せ13%（最大28日）</p>
+      <p>パパも14日以上育休を取ると、ママにも13%の上乗せがあります。産休・育休中は社会保険料が免除されます。</p>
+    </div>`;
+  }else if(S.mama==="self"){
+    h += `<h3 class="sec">ママが自営業・フリーランスの場合</h3>
+    <div class="money-card mama">
+      <h3>国民年金保険料の産前産後免除</h3>
+      <p class="amount">4か月分が免除</p>
+      <p>予定月の前月から4か月間。免除期間も年金額は減りません。国民健康保険に加入していれば、国保の保険料（税）も同じ期間が軽減されます。</p>
+    </div>`;
+  }else{
+    h += `<h3 class="sec">対象外になりやすいもの</h3>
+    <div class="money-card gray">
+      <h3>出産手当金・産休中の社会保険料免除</h3>
+      <p class="amount">ママが会社勤めの場合のみ</p>
+      <p>専業主婦の場合は対象外です。</p>
+    </div>`;
+  }
+
+  h += `<h3 class="sec">あとで忘れずに</h3>
+    <div class="money-card">
+      <h3>医療費控除</h3>
+      <p class="amount">税金の還付</p>
+      <p>家族の1年間の医療費（妊婦健診の自己負担・出産費用・通院の交通費など）から一時金などを引いて10万円を超えたら、翌年の確定申告で控除を受けられます。領収書は捨てずに保管を。</p>
+    </div>`;
+  document.getElementById("moneyWrap").innerHTML = h;
+}
+
+/* ---------- 描画：窓口 ---------- */
+function renderContact(){
+  let h = `<h2>問い合わせ・提出先</h2>`;
+  if(!S.muni){
+    h += `<p class="desc">上でお住まいの市区町村を選ぶと、担当の窓口名が表示されます。</p>`;
+  }else{
+    h += `<p class="desc">${esc(S.pref)} ${esc(S.muni)}の窓口です。${badge()}</p>`;
+  }
+  if(L && L.contacts){
+    L.contacts.forEach(c=>{
+      h += `<div class="contact"><h3>${esc(c.name)}</h3>${c.tel?`<p class="tel"><a href="tel:${c.tel.replace(/-/g,"")}">${esc(c.tel)}</a></p>`:""}<p>${esc(c.note||"")}</p></div>`;
+    });
+  }else{
+    const rows = [
+      ["妊娠届・母子手帳・妊婦支援給付金・健診・産後ケア", office("pregnancy")],
+      ["出生届", office("birth")],
+      ["児童手当", office("allowance")],
+      ["子ども医療費", office("medical")],
+    ];
+    rows.forEach(([what,where])=>{ h += `<div class="contact"><h3>${esc(where)}</h3><p>${esc(what)}</p></div>`; });
+    if(S.muni) h += `<p class="how-note">電話番号・受付時間は公式サイトで確認してください。<a href="${searchUrl(S.pref+" "+S.muni+" "+hall()+" 電話番号")}" target="_blank" rel="noopener">${esc(S.muni)}の連絡先を検索する</a></p>`;
+  }
+  h += `<div class="contact"><h3>勤務先（総務・人事）</h3><p>赤ちゃんの健康保険の扶養追加、出産育児一時金、産休・育休の申出と給付金の申請。</p></div>`;
+  h += `<div class="contact"><h3>参考リンク</h3><p>`;
+  if(L && L.links) L.links.forEach(l=>{ h += `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a><br>`; });
+  else if(S.muni) h += `<a href="${searchUrl(S.pref+" "+S.muni+" 妊娠届 母子健康手帳")}" target="_blank" rel="noopener">${esc(S.muni)}の妊娠届・母子手帳（検索）</a><br><a href="${searchUrl(S.pref+" "+S.muni+" 出生届")}" target="_blank" rel="noopener">${esc(S.muni)}の出生届（検索）</a><br>`;
+  h += `<a href="https://www.mhlw.go.jp/stf/syussyougo_kanishindan_00001.html" target="_blank" rel="noopener">出生後休業支援給付の簡易診断（厚労省）</a></p></div>`;
+  document.getElementById("contactWrap").innerHTML = h;
+}
+
+/* ---------- 自治体の情報 ---------- */
+const statusEl = document.getElementById("localStatus");
+function setStatus(html, cls){statusEl.innerHTML = html; statusEl.className = "local-status" + (cls?" "+cls:"");}
+function updatePlace(){
+  document.getElementById("placeLine").textContent = S.muni ? `📍 ${S.pref} ${S.muni}` : "全国の自治体に対応";
+}
+
+async function loadMuniList(pref){
+  const dl = document.getElementById("muniList");
+  dl.innerHTML = "";
+  if(!pref) return;
+  const cached = store.json(K.munis+pref, null);
+  if(cached){ dl.innerHTML = cached.map(n=>`<option value="${esc(n)}">`).join(""); return; }
+  if(!sample) return;
+  try{
+    const list = await sample.json(`${pref}の現在（2026年）の市区町村名をすべて列挙してください。市・町・村（東京都は特別区の「〇〇区」も）を含め、政令指定都市の区は含めないでください。郡名は付けず「〇〇市」「〇〇町」のような正式名称で。JSONの文字列配列だけを返してください。例：["福島市","会津若松市"]`, {modelTier:"quick"});
+    if(Array.isArray(list) && list.length){
+      const clean = list.filter(x=>typeof x==="string").map(x=>x.trim()).filter(Boolean);
+      store.set(K.munis+pref, JSON.stringify(clean));
+      if(S.pref===pref) dl.innerHTML = clean.map(n=>`<option value="${esc(n)}">`).join("");
+    }
+  }catch(e){ /* 一覧なしでも直接入力できる */ }
+}
+
+let localCtl = null;
+async function loadLocal(force){
+  L = null;
+  if(!S.pref || !S.muni){ setStatus(""); refresh(); return; }
+  const key = `${S.pref}/${S.muni}`;
+  if(PRESETS[key]){ L = PRESETS[key]; setStatus(`${esc(S.muni)}の情報は公式サイトで確認済みです。`, "ok"); refresh(); return; }
+  const cached = !force && store.json(K.local+key, null);
+  if(cached){ L = cached; setStatus(`${esc(S.muni)}の情報はAIによる参考情報です。必ず公式サイトで確認してください。 <button class="mini" id="reload">もう一度調べる</button>`, "ai"); bindReload(); refresh(); return; }
+  if(!sample){
+    setStatus(`自治体ごとの情報は、claude.aiでこのページを開いたときに表示できます。いまは全国共通の内容を表示しています。`, "warn");
+    refresh(); return;
+  }
+  refresh();
+  localCtl?.abort(); localCtl = new AbortController();
+  setStatus(`${esc(S.muni)}の制度を調べています…（数十秒かかることがあります）`, "busy");
+  const prompt = `あなたは日本の自治体の子育て支援制度に詳しいアシスタントです。${S.pref}${S.muni}について、妊娠・出産・子育ての制度を、あなたの知識の範囲で答えてください。
+ルール：
+- 確信がない項目は推測せず "不明" と書く
+- 電話番号やURLは書かない
+- extras には、${S.muni}または${S.pref}独自の出産・子育ての給付や助成（出産祝い金、おむつ券、県の上乗せ助成など）で比較的確かなものだけを最大4件。国の全国共通制度（妊婦支援給付金、出産育児一時金、児童手当、育休給付）は含めない
+- 日本語で簡潔に
+次のJSONだけを返してください：
+{"exists":true,"offices":{"pregnancy":"妊娠届・母子手帳の担当課名","birth":"出生届の担当課名","allowance":"児童手当の担当課名","medical":"子ども医療費助成の担当課名"},"medical":{"age":"子ども医療費助成の対象年齢（例：18歳の年度末まで）","cost":"自己負担（例：通院・入院とも無料）","income":"所得制限の有無"},"extras":[{"name":"制度名","summary":"1〜2文の説明"}],"postpartum":"産後ケア事業の概要を1文で","caution":"情報が古い可能性がある点などの注意を1文で"}
+${S.muni}が${S.pref}に存在しない場合は {"exists":false} だけを返してください。`;
+  try{
+    const r = await sample.json(prompt, {signal: localCtl.signal});
+    if(!r || r.exists===false){
+      setStatus(`「${esc(S.muni)}」が${esc(S.pref)}に見つかりませんでした。名前を確認してください。`, "warn");
+      refresh(); return;
+    }
+    L = {source:"ai", offices:r.offices||{}, medical:r.medical||{}, extras:Array.isArray(r.extras)?r.extras.slice(0,4):[], postpartum:r.postpartum||"", caution:r.caution||""};
+    store.set(K.local+key, JSON.stringify(L));
+    setStatus(`${esc(S.muni)}の情報を反映しました。AIによる参考情報なので、必ず公式サイトで確認してください。 <button class="mini" id="reload">もう一度調べる</button>`, "ai");
+    bindReload();
+  }catch(e){
+    if(e && e.code==="cancelled") return;
+    const msg = e && e.code==="not_granted" ? "自治体の情報を調べるには、Claudeの利用を許可してください。" :
+                e && e.code==="rate_limited" ? "混み合っています。少し時間をおいて、市区町村を選び直してください。" :
+                "自治体の情報を取得できませんでした。全国共通の内容を表示しています。";
+    setStatus(`${msg} <button class="mini" id="reload">もう一度調べる</button>`, "warn");
+    bindReload();
+  }
+  refresh();
+}
+function bindReload(){const b=document.getElementById("reload"); if(b) b.onclick=()=>loadLocal(true);}
+
+/* ---------- 全体 ---------- */
+function refresh(){
+  TASKS = buildTasks();
+  updatePlace();
+  renderStages(); renderApply(); renderNow(); renderProgress(); renderCal(); renderGrow(); renderMoney(); renderContact();
+}
+function saveSettings(){store.set(K.set, JSON.stringify(S))}
+
+const prefSel = document.getElementById("pref"), muniIn = document.getElementById("muni");
+prefSel.innerHTML += PREFS.map(p=>`<option>${p}</option>`).join("");
+prefSel.value = S.pref; muniIn.value = S.muni; muniIn.disabled = !S.pref;
+document.getElementById("order").value = S.order;
+document.getElementById("mama").value = S.mama;
+const dueInput = document.getElementById("dueDate");
+if(store.get(K.due)) dueInput.value = store.get(K.due);
+
+prefSel.addEventListener("change",()=>{
+  S.pref = prefSel.value; S.muni = ""; muniIn.value = ""; muniIn.disabled = !S.pref;
+  saveSettings(); loadMuniList(S.pref); loadLocal();
+  if(S.pref) muniIn.focus();
+});
+muniIn.addEventListener("change",()=>{
+  let v = muniIn.value.trim().replace(/\s/g,"");
+  if(v && !/[市区町村]$/.test(v)){ setStatus("「〇〇市」「〇〇町」のように、最後まで入力してください。", "warn"); return; }
+  S.muni = v; muniIn.value = v; saveSettings(); loadLocal();
+});
+["order","mama"].forEach(id=>document.getElementById(id).addEventListener("change",e=>{S[id]=e.target.value;saveSettings();refresh()}));
+dueInput.addEventListener("change",()=>{
+  if(dueInput.value){due = parseDate(dueInput.value); store.set(K.due, dueInput.value)}
+  else{due = null; store.del(K.due)}
+  calMonth = null; calSel = null; refresh();
+});
+
+document.addEventListener("change",e=>{
+  if(!e.target.matches('.task input[type=checkbox]')) return;
+  const id = e.target.closest(".task").dataset.id;
+  if(e.target.checked) checks[id]=1; else delete checks[id];
+  store.set(K.chk, JSON.stringify(checks));
+  document.querySelectorAll(`.task[data-id="${id}"]`).forEach(el=>{
+    el.classList.toggle("done", !!checks[id]);
+    el.querySelector("input").checked = !!checks[id];
+  });
+  renderNow(); renderProgress(); renderCal();
+});
+document.addEventListener("click",e=>{
+  if(e.target.matches('.task summary input')){
+    const d = e.target.closest("details"), wasOpen = d.open;
+    setTimeout(()=>{d.open = wasOpen},0);
+  }
+}, true);
+
+document.getElementById("calList").addEventListener("change",e=>{
+  const t = e.target;
+  if(t.dataset.ks){
+    if(t.value) ksOverride[t.dataset.ks] = t.value; else delete ksOverride[t.dataset.ks];
+    store.set("birthGuide.kenshin", JSON.stringify(ksOverride));
+    if(t.value){ const d = parseDate(t.value); calMonth = new Date(d.getFullYear(), d.getMonth(), 1); if(calSel) calSel = d; }
+    renderCal(); renderNow();
+  }else if(t.dataset.ksdone){
+    if(t.checked) checks[t.dataset.ksdone]=1; else delete checks[t.dataset.ksdone];
+    store.set(K.chk, JSON.stringify(checks));
+    renderCal(); renderNow();
+  }
+});
+document.getElementById("calList").addEventListener("click",e=>{
+  const id = e.target.dataset && e.target.dataset.ksreset;
+  if(!id) return;
+  delete ksOverride[id]; store.set("birthGuide.kenshin", JSON.stringify(ksOverride));
+  renderCal(); renderNow();
+});
+document.getElementById("calPrev").addEventListener("click",()=>{calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()-1,1);calSel=null;renderCal()});
+document.getElementById("calNext").addEventListener("click",()=>{calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()+1,1);calSel=null;renderCal()});
+document.getElementById("calGrid").addEventListener("click",e=>{
+  const b = e.target.closest(".cal-day[data-d]"); if(!b) return;
+  const dt = new Date(calMonth.getFullYear(),calMonth.getMonth(),+b.dataset.d);
+  calSel = (calSel && sameDay(calSel,dt)) ? null : dt;
+  renderCal();
+});
+
+document.querySelectorAll('[role=tab]').forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    document.querySelectorAll('[role=tab]').forEach(t=>t.setAttribute("aria-selected", t===tab));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle("active", p.id===tab.getAttribute("aria-controls")));
+    const top = document.querySelector("nav.tabs").offsetTop;
+    if(window.scrollY > top) window.scrollTo({top, behavior:"smooth"});
+  });
+});
+
+document.getElementById("reset").addEventListener("click",()=>{
+  if(!confirm("入力した状況・予定日・チェックをすべて消します。よろしいですか？")) return;
+  checks = {}; due = null; dueInput.value = ""; calMonth = null; calSel = null;
+  S = {pref:"",muni:"",order:"2",mama:"home"};
+  prefSel.value = ""; muniIn.value = ""; muniIn.disabled = true;
+  document.getElementById("order").value = "2"; document.getElementById("mama").value = "home";
+  [K.chk,K.due,K.set,"birthGuide.kenshin"].forEach(k=>store.del(k)); ksOverride = {};
+  L = null; setStatus(""); refresh();
+});
+
+// 初回表示：確認済みの自治体・保存済みの情報はすぐ反映し、それ以外はClaudeの準備ができてから調べる
+(()=>{
+  const key = `${S.pref}/${S.muni}`;
+  if(S.muni && (PRESETS[key] || store.get(K.local+key))) loadLocal();
+  else { refresh(); if(S.muni) setStatus("自治体の情報を準備しています…","busy"); }
+})();
+(async()=>{
+  try{ if(window.claude && window.claude.use) sample = await window.claude.use("sample"); }catch(e){ sample = null; }
+  if(S.pref) loadMuniList(S.pref);
+  if(S.muni && !L) loadLocal();
+})();
+</script>
+
+</body>
+</html>
